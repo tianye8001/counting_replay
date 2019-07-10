@@ -1,7 +1,12 @@
 *.root
 *.pdf
 *.png
-*.C 
+*.C
+*~
+*#*
+*swn
+*swp
+*swo 
 *.txt
 *.pdf
 *.png
