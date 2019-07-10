@@ -1,0 +1,59 @@
+#!/bin/bash
+
+if [ $# -eq 0 ] 
+then
+	echo "Please enter run number"
+	read RUNNUM
+else
+	RUNNUM=$1
+fi
+
+PRINT=0
+
+if [ $# -eq 2 -a $2 == "-P" ];
+then 
+        PRINT=1
+fi
+
+Left="kTRUE"
+Right="kTRUE"
+
+if [ "$RUNNUM" -lt "10000" ]; then
+#   echo " $RUNNUM is Left Arm run"
+   Right="kFALSE"
+else
+#   echo " $RUNNUM is Right Arm run"
+   Left="kFALSE"
+fi
+
+if [ $Left == 'kTRUE' -a $Right == 'kFALSE' ]     # LEFT ARM ONLY
+then
+    echo " LEFT arm plots only"
+    if [ $PRINT -eq 1 ];
+    then
+        onlineGUI64/online -f onlineGUI64/LHRS_online.cfg -r $RUNNUM -P
+    else
+        onlineGUI64/online -f onlineGUI64/LHRS_online.cfg -r $RUNNUM
+    fi
+    
+    #onlineGUI64/online -f onlineGUI64/LHRS_phy.cfg -r $RUNNUM
+
+
+elif [ $Left == 'kFALSE' -a $Right == 'kTRUE' ]       # RIGHT ARM ONLY
+then
+    echo " RIGHT arm plots only"
+
+    if [ $PRINT -eq 1 ];
+    then
+  	onlineGUI64/online -f onlineGUI64/RHRS_online.cfg -r $RUNNUM -P
+    else
+  	onlineGUI64/online -f onlineGUI64/RHRS_online.cfg -r $RUNNUM
+    fi
+
+  	#onlineGUI64/online -f onlineGUI64/RHRS_phy.cfg -r $RUNNUM
+
+else
+
+    echo " Input parameters incompatible with any plotting option"
+#    echo " ./onlinePots $RUNNUM -s $SET_UP"
+fi

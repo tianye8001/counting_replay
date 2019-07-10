@@ -1,0 +1,460 @@
+TSLeft->Draw("LeftS0A_r:Entry$")
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0A_r:Entry$")
+TSLeft->SetMarkerColor(kRed)
+TSLeft->Draw("LeftS0B_r:Entry$","","SAME")
+.w
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/prexLHRS_1789_-1.root")
+TSLeft->Draw("LeftS0B_r:Entry$")
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0B_r:Entry$")
+TSLeft->SetMarkerColor(kRed)
+TSLeft->Draw("LeftS0A_r:Entry$","","SAME")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/prexLHRS_1788_-1.root")
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0B_r:Entry$")
+TSLeft->SetMarkerColor(kRed)
+TSLeft->Draw("LeftS0A_r:Entry$","","SAME")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/prexLHRS_1790_-1.root")
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0B_r:Entry$")
+TSLeft->SetMarkerColor(kRed)
+TSLeft->Draw("LeftS0A_r:Entry$","","SAME")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/prexLHRS_1790_-1.root")
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0A_r:Entry$")
+TSLeft->SetMarkerColor(kRed)
+TSLeft->Draw("LeftS0B_r:Entry$","","SAME")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/prexLHRS_1790_-1.root")
+TSLeft->SetMarkerColor(kRed)
+TSLeft->Draw("LeftS0A_r:Entry$")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/prexLHRS_1790_-1.root")
+TSLeft->SetMarkerColor(kRed)
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0A_r:Entry$")
+TSLeft->Draw("LeftS0B_r:Entry$","","SAME")
+TSLeft->SetMarkerColor(kBlack)
+TSLeft->Draw("LeftS0B_r:Entry$","","SAME")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/chandan/prexLHRS_1787_-1.root")
+TSLeft->SetMarkerStyle(20)
+TSLeft->SetMarkerColor(kBlack)
+TSLeft->Draw("LeftS0A_r:Entry$")
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/prexLHRS_1790_-1.root")
+TBrowser hy
+TSLeft->SetMarkerColor(kRed)
+TSLeft->Draw("LeftT1_r:Entry$","","SAME")
+TCanvas *c1 = new TCanvas("c1","Scaler rate",800,800)
+c1->Divide(2,2)
+c1-cd(1)
+c1->cd(1)
+TSLeft->SetMarkerStyle(20)
+TSLeft->SetMarkerColor(kBlack)
+TSLeft->Draw("LeftS0A_r:Entry$")
+c1->cd(2)
+c1->GetYaxis()->SetLogy()
+c1->cd(2)->SetLogy()->SetLogy()
+c1->cd(2)->GetYaxis()->SetLogy()
+c1->SetLogy()
+TSLeft->Draw("LeftS0A_r:Entry$")
+c1->cd(3)
+TSLeft->Draw("LeftT1_r:Entry$")
+c1->cd(4)
+c1->SetLogy()
+TSLeft->Draw("LeftT1_r:Entry$")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/chandan/prexLHRS_1787_-1.root")
+TCanvas *c1 = new TCanvas("c1","Scaler rate",800,800)
+c1->Divide(2,2)
+c1->cd(1)
+c1->SetUserRange(2,20e4)
+c1->cd(1)->SetUserRange(2,20e4)
+TSLeft->Draw("LeftS0A_r:Entry$")
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0A_r:Entry$")
+c1->cd(2)
+TSLeft->Draw("LeftS0A_r:Entry$>>temp")
+TH2F* temp=(TH2F*) gDirectory->Get("temp")
+temp->SetMinimum(0)
+temp->Draw()
+temp->GetYaxis()->SetUserRange(0, 180000)
+TH2F* hist= new TH2F("hist", "hist" , 100, 0, 65, 100, 0, 180000)  
+TSLeft->Draw("LeftS0A_r:Entry$>>hist")
+hist->SetMarkerStyle(20)
+hist->Draw()
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/chandan/prexLHRS_1787_-1.root")
+TCanvas *c1 = new TCanvas("c1","Scaler rate",800,800)
+hist->SetMarkerStyle(20)
+c1->Divide(1,2)
+c1->cd(1)
+TSLeft->Draw("LeftS0A_r:Entry$")
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0A_r:Entry$")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/chandan/prexLHRS_1787_-1.root")
+TCanvas *c1 = new TCanvas("c1","Scaler rate",800,800)
+c1->Divide(1,3)
+c1->cd(1)
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0A_r:Entry$")
+c1->cd(2)
+TSLeft->Draw("LeftS0A_r:Entry$")
+c1->cd(3)
+TSLeft->Draw("LeftT1_r:Entry$")
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/chandan/prexLHRS_1787_-1.root")
+TSLeft->SetMarkerStyle(20)
+TSLeft->Draw("LeftS0B_r:Entry$")
+TSLeft->Draw("LeftS0A_r:Entry$")
+TSLeft->Draw("LeftS0B_r:Entry$")
+.x setupL.C(1791)
+.x ./macros/detL1.C
+.x ./macros/detL3.C
+.x ./macros/detL2.C
+.x ./macros/detL2.C
+.q
+.x setupL.C(1791)
+.x ./macros/detL2.C
+.x ./macros/detL1.C
+.q
+.x setupL.C(1791)
+.x ./macros/detL1.C
+T->Draw("fevtHdr.fEvtType")
+TCanvas c1
+.q
+.x setupL.C(1791)
+.q
+.x setupL.C(1792)
+.q
+.x setupL.C(1792)
+T->Draw("fevtHdr.fEvtType")
+T->Draw("fEvtHdr.fEvtType")
+T->Draw("P.evtypebits")
+Lvu1t->Draw()
+Lvu2t->Draw()
+.q
+.q
+.x setupL.C(1792)
+Lvu1t->Draw()
+Lvu2t->Draw()
+Lvu1t->Draw()
+Lvu2t->Draw()
+Lvu1t->Draw()
+Lvu2t->Draw()
+Lvv1t->Draw()
+Lvv2t->Draw()
+Lvv1t->Draw()
+Lvu1t->Draw()
+Lvu2t->Draw()
+.q
+.x setupL.C(1792)
+.x ./macros/detL1.C
+.x setupR.C(20921)
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/Siyu/prexLHRS_Opt_1648_0.root")
+.x showSieve_sakib3D.C(1648)
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/Siyu/prexLHRS_Opt_1648_0.root")
+.x showSieve_sakib3D.C(1648)
+.q
+TFile *_file0 = TFile::Open("/chafs1/work1/prex_counting/Siyu/prexLHRS_Opt_1648_0.root")
+.x showSieveLeft.C 
+.q
+.x setup.C (1729)
+.q
+.q
+.x setup.C (20860)
+T->Draw("P.upQadcR")
+T->Draw("P.loQadcR")
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1727_100000.root")
+.x projLeftQuartz.C 
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1729_100000.root")
+.ls
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1729_-1.root")
+.ls
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(100,-0.2,0.2)")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1")
+T->Print("P.*")
+T->Print("P.upQadcL")
+T->Draw("P.upQadcL")
+T->Draw("P.loQadcL")
+T->Draw("P.upQadcL")
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1729_-1.root")
+.ls
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1")
+T->Draw("P.fadcUQL")
+T->Draw("P.upQadcL")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1 && P.upQadcL>480")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1 && P.upQadcL>480","same")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1")
+T->Draw("L.tr.y[0]+0.9*L.tr.ph[0]>>h2(200,-0.2,0.2)","L.vdc.u1.nclust==1 && L.vdc.u2.nclust==1 && L.vdc.v1.nclust==1 && L.vdc.v2.nclust==1 && P.upQadcL>480","same")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0]):P.upQadcL")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0]):P.upQadcL>>h(400,400,800,100,-0.2,0.2)")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0]):P.upQadcL>>h(400,400,800,100,-0.2,0.2)","","colz")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0]):P.upQadcL>>h(400,400,800,100,-0.1,0.1)","","colz")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0]):P.upQadcL>>h(800,400,800,100,-0.1,0.1)","","colz")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0]):P.upQadcL>>h(400,400,800,100,-0.1,0.1)","","colz")
+T->Draw("(L.tr.x[0]+0.9*L.tr.th[0]):P.upQadcL>>h(400,400,800,100,-0.1,0.1)","","colz")
+T->Draw("(L.tr.x[0]+0.9*L.tr.th[0]):P.upQadcL>>h(400,400,800,100,-0.2,0.2)","","colz")
+.! ls
+.! pwd
+c1->Print("tr_x_vs_upADCL.png")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0]):P.upQadcL>>h(400,400,800,100,-0.2,0.2)","","colz")
+c1->Print("tr_y_vs_upADCL.png")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0])","P.upQadcL<480")
+T->Draw("(L.tr.y[0]+0.9*L.tr.ph[0])>>h(100,-0.2,0.2)","P.upQadcL<480")
+T->Draw("(L.tr.x[0]+0.9*L.tr.th[0])>>h(100,-0.2,0.2)","P.upQadcL<480")
+T->Draw("L.gold.x","P.upQadcL<480")
+T->Draw("L.gold.x>>h(100,-0.3,0.3)","P.upQadcL<480")
+T->Draw("L.gold.x>>h(100,-0.1,0.1)","P.upQadcL<480")
+T->Draw("L.gold.x>>h(100,-0.01,0.01)","P.upQadcL<480")
+T->Draw("L.gold.th>>h(100,-0.01,0.01)","P.upQadcL<480")
+T->Draw("L.gold.th>>h(100,-0.1,0.1)","P.upQadcL<480")
+T->Draw("L.gold.th>>h(100,-0.1,0.1)","P.upQadcL>480")
+T->Draw("L.gold.th>>h(100,-0.1,0.1)")
+T->Draw("L.gold.th>>h(100,-0.1,0.1)","P.upQadcL>480")
+T->Draw("L.gold.th>>h(100,-0.1,0.1)","P.upQadcL<480")
+T->Draw("L.gold.ph>>h(100,-0.1,0.1)","P.upQadcL>480")
+T->Draw("L.gold.ph>>h(100,-0.1,0.1)","P.upQadcL<480")
+T->Draw("L.gold.ph>>h(100,-0.1,0.1)","")
+T->Draw("L.gold.ph>>h(100,-0.1,0.1)","P.upQadcL<480")
+T->Draw("L.gold.ph>>h(100,-0.1,0.1)","P.upQadcL>480")
+T->Draw("L.gold.y>>h(100,-0.1,0.1)","P.upQadcL>480")
+T->Draw("L.gold.y>>h(100,-0.1,0.1)","P.upQadcL<480")
+T->Draw("L.gold.y>>h(100,-0.1,0.1)","")
+T->Draw("L.gold.y>>h(100,-0.1,0.1)","P.upQadcL<480")
+T->Draw("L.gold.y>>h(100,-0.1,0.1)","")
+T->Draw("L.gold.y>>h(100,-0.1,0.1)","P.upQadcL<480","same")
+T->Draw("L.gold.y>>h(100,-0.1,0.1)","")
+T->Draw("L.gold.y","P.upQadcL<480","same")
+T->Draw("L.gold.y","P.upQadcL>480","same")
+T->Draw("L.tr.th","P.upQadcL>480","same")
+T->Draw("L.tr.th","")
+T->Draw("L.tr.th>>h(100,-0.1,0.1)","")
+T->Draw("L.tr.th>>h(200,-0.1,0.1)","")
+T->Draw("L.tr.th>>h(200,-0.1,0.1)","P.upQadcL>480")
+T->Draw("L.tr.th>>h(200,-0.1,0.1)","")
+T->Draw("L.tr.th>>h(200,-0.1,0.1)","P.upQadcL>480","same")
+T->Draw("L.tr.th>>h(200,-0.1,0.1)","")
+T->Draw("L.tr.th","P.upQadcL>480","same")
+T->Draw("L.tr.th","P.upQadcL<480","same")
+c1->Print("tr_th_vs_adccut.png")
+T->Draw("L.tr.ph>>h(200,-0.1,0.1)")
+T->Draw("L.tr.ph","P.upQadcL>480","same")
+T->Draw("L.tr.ph","P.upQadcL<480","same")
+c1->Print("tr_ph_vs_adccut.png")
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1729_-1.root")
+.ls
+T->Draw("L.gold.ph")
+.q
+.x replay_RHRS_online.C(20860,100000)
+.x replay_RHRS_online.C(20860,100000)
+.x setup.C(20933)
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1729_100000.root")
+T->Print("*eff*")
+.ls
+.q
+TFile *_file0 = TFile::Open("/adaqfs/home/a-onl/sanghwa/replay/copied/prexLHRS_1390.root")
+.ls
+T->Print("*eff*")
+.q
+.x replay_LHRS_online.C(1729, 100000)
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1729_100000.root")
+.ls
+.x replay_RHRS_online.C(20591, 100000)
+.q
+.q
+.x replay_LHRS_online.C(1530,100000)
+.x setup.C(1808,50000)
+.x setup.C(20938,50000)
+.x setup.C(1808,50000)
+.q
+.x setup.C(1808,50000)
+TFile *_file0 = TFile::Open("rootfiles/prexRHRS_20938_100000.root")
+.ls
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1808_50000.root")
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1808_50000.root")
+.x showLeftfadc.C 
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1729_-1.root")
+.x showRightfadc.C
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1729_-1.root")
+.x showRightfadc.C
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1666.root")
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1666_100000.root")
+.x showSieve_sakib3D.C(1666)
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexLHRS_1666.root")
+.x showSieve_sakib3D.C(1666)
+.q
+.q
+.q
+.x setup.C (1812)
+.x setup.C(20943,100000)
+.x setup.C(1813,100000)
+.q
+.q
+.q
+.q
+.x setup.C(1815,100000)
+.x setup.C(20945,100000)
+.q
+.x setup.C(1815,100000)
+.q
+.x setup.C(1817,100000)
+.q
+.x setup.C(20947,100000)
+.q
+.x setup.C(20950,100000)
+.q
+.x setup.C(1820,100000)
+.q
+.q
+.x setup.C(1821,100000)
+.x setup.C(20951,100000)
+.q
+.x setup.C(1821,100000)
+.q
+.q
+.x setup.C(1821,100000)
+.q
+.x setup.C(1821,100000)
+.x setup.C(1823,100000)
+.x setup.C(20953,100000)
+.q
+.x setup.C(20953,100000)
+.x setup.C(20944,100000)
+T->Draw("P.upQadcR")
+T->Draw("P.loQadcR")
+T->Draw("P.upQadcR")
+.q
+.x setup.C(20954,100000)
+.q
+.x setup.C(1824,100000)
+.q
+.x setup.C(1827,100000)
+.q
+.x setup.C(20957,100000)
+.q
+.x setup.C(1827,100000)
+.x setup.C(1831,100000)
+Error in <TSelectorDraw::DrawSelect>: ncols*3 < ncomma ncols=1, ncomma=4
+Error in <TSelectorDraw::DrawSelect>: ncols*3 < ncomma ncols=1, ncomma=4
+.q
+.x setup.C(1831, 100000)
+.x setup.C(1831, 100000)
+.x setup.C(1831, 100000)
+.q
+.x setup.C(1833, 100000)
+.q
+.x setup.C(1833, 100000)
+.q
+.x setup.C(1833, 100000)
+.q
+.x setup.C(1833, 100000)
+.q
+.x setup.C(20961, 100000)
+TBrowser T
+.q
+.x setup.C(20975, 100000)
+.q
+.x setup.C(1847, 100000)
+.q
+.x setup.C(1847, 100000)
+.q
+.x setup.C(1831, 100000)
+.x setup.C(1847, 100000)
+.q
+.x setup.C(1848, 100000)
+.q
+.x setup.C(1848, 100000)
+.x setup.C(20976, 100000)
+.q
+.x setup.C(20942, 100000)
+.q
+.q
+.q
+.q
+.x setup.C(20978, 100000)
+.q
+.x setup.C(1850, 100000)
+.q
+.x setup.C(1850, 100000)
+.q
+.x setup.C(20981, 100000)
+.x setup.C(1853, 100000)
+.q
+.x setup.C(1853, 100000)
+.q
+.x setup.C(1853, 100000)
+.q
+.x setup.C(1853, 100000)
+.q
+.q
+.x setup.C(20994)
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexRHRS_20994_-1.root")
+.q
+TFile *_file0 = TFile::Open("rootfiles/prexRHRS_20994_-1.root")
+T->Draw("P.evtypebits")
+T->Draw("P.evtypebits")
+.q
+.x setup.C(1868)
+.q
+TFile *_file0 = TFile::Open("/adaqfs/home/a-onl/sanghwa/replay/macros/rootfiles/prexLHRS_1850_100000.root")
+.L /adaqfs/home/a-onl/sanghwa/replay/macros/detPlot.C
+.q
+TFile *_file0 = TFile::Open("/adaqfs/home/a-onl/sanghwa/replay/macros/rootfiles/prexLHRS_1812_-1.root")
+.L /adaqfs/home/a-onl/sanghwa/replay/macros/detPlot.C
+.ls
+.q
+TFile *_file0 = TFile::Open("/adaqfs/home/a-onl/sanghwa/replay/macros/rootfiles/prexLHRS_1812_-1.root")
+.ls
+.L /adaqfs/home/a-onl/sanghwa/replay/macros/DrawTgVar.C
+.q
+TFile *_file0 = TFile::Open("/adaqfs/home/a-onl/sanghwa/replay/macros/rootfiles/prexLHRS_1850_100000.root")
+.L /adaqfs/home/a-onl/sanghwa/replay/macros/DrawTgVar.C
+.q
+TFile *_file0 = TFile::Open("/adaqfs/home/a-onl/sanghwa/replay/macros/spRootFiles/prexLHRS_1812_200000.root")
+.L /adaqfs/home/a-onl/sanghwa/replay/macros/detPlot.C
+.q
+.ls
+.pwd
+.q
+.q
+.X setup.C (1861,100000)
+.q
+TFile *_file0 = TFile::Open("../../sanghwa/replay/macros/rootfiles/prexLHRS_1861_100000.root")
+.L ../../sanghwa/replay/macros/detPlot.C
+.q
+.X ../../sanghwa/replay/macros/setup_sanghwa.C (1861, 100000)
+analyzer
+.q
+.L ../../sanghwa/replay/macros/detPlot.C
+.q
