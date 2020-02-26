@@ -1,7 +1,7 @@
 R__LOAD_LIBRARY(../ParityData/libParity.so)
 
 using namespace std;
-void setup(Int_t runNo=0, Int_t lastevt=-1){
+void setup(Int_t runNo=0, Int_t lastevt=-1, Int_t split1=0){
   //  R. Michaels, May 2014
   //  Steering script for Hall A analyzer
  /* int runNo, hrs;
@@ -38,11 +38,12 @@ void setup(Int_t runNo=0, Int_t lastevt=-1){
   // e-p scattering
   Double_t amu = 931.494*1.e-3;  // amu to GeV
   Double_t he4 = 4*amu;
-  Double_t pb208 = 208*amu;
-  
-  //Double_t mass_tg  = he4; // Helium
-  Double_t mass_tg  = pb208; // Helium
+  Double_t pb208 = 208*amu;  
+  Double_t ca48 = 48*amu;  
 
+  //Double_t mass_tg  = he4; // Helium
+  Double_t mass_tg = ca48;
+  
   // Electron kinematics
   THaPhysicsModule* EK_r = new THaElectronKine("EK_R",
 					       "Electron kinematics in HRS-R",
@@ -70,11 +71,11 @@ void setup(Int_t runNo=0, Int_t lastevt=-1){
   THaAnalyzer* analyzer = new THaAnalyzer;
   
   THaEvent* event = new THaEvent;
-  for (Int_t nsplit=0;nsplit<1;nsplit++){  
+  for (Int_t nsplit=split1;nsplit<split1+1;nsplit++){  
   if(runNo>20000)
-  sprintf(infile,"/adaq1/data1/prexRHRS_%d.dat.%d",runNo,nsplit);
+  sprintf(infile,"/adaq1/data1/prexRHRS_%d.dat.%d",runNo,split1);
   else
-  sprintf(infile,"/adaq1/data1/prexLHRS_%d.dat.%d",runNo,nsplit);
+  sprintf(infile,"/adaq1/data1/prexLHRS_%d.dat.%d",runNo,split1);
   cout<<"replay: Try file "<<infile<<endl;
   THaRun *run;
   run = new THaRun(infile);
@@ -87,9 +88,9 @@ void setup(Int_t runNo=0, Int_t lastevt=-1){
   analyzer->SetEvent( event );
   char outname[300];
   if(runNo>20000)
-  sprintf(outname,"/chafs1/work1/prex_counting/prexRHRS_%d_%d.root",runNo, lastevt);
+  sprintf(outname,"/chafs1/work1/prex_counting/prexRHRS_%d_%d_file%d.root",runNo, lastevt,split1);
   else
-  sprintf(outname,"/chafs1/work1/prex_counting/prexLHRS_%d_%d.root",runNo, lastevt);
+  sprintf(outname,"/chafs1/work1/prex_counting/prexLHRS_%d_%d_file%d.root",runNo, lastevt,split1);
   analyzer->SetOutFile( outname );
   analyzer->SetCutFile("onlana.cuts");
  if(runNo>20000)
@@ -97,6 +98,7 @@ void setup(Int_t runNo=0, Int_t lastevt=-1){
  else  analyzer->SetOdefFile("output_L.def");
    analyzer->SetSummaryFile("summary_example.log"); // optional
 //
+  
   run->SetLastEvent(lastevt);   // Number of events to process
   analyzer->Process(*run);
   }

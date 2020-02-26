@@ -54,7 +54,7 @@ void setupL(Int_t runNo=0, Int_t lastevt=-1){
   THaAnalyzer* analyzer = new THaAnalyzer;
   
   THaEvent* event = new THaEvent;
-  for (Int_t nsplit=0;nsplit<6;nsplit++){  
+  for (Int_t nsplit=0;nsplit<3;nsplit++){  
   sprintf(infile,"/adaq1/data1/prexLHRS_%d.dat.%d",runNo,nsplit);
   cout<<"replay: Try file "<<infile<<endl;
   THaRun *run;
@@ -73,6 +73,8 @@ void setupL(Int_t runNo=0, Int_t lastevt=-1){
   analyzer->SetOdefFile("output.def");
    analyzer->SetSummaryFile("summary_example.log"); // optional
 //
+  lastevt = 10000000;
+ 
   run->SetLastEvent(lastevt);   // Number of events to process
 //  run->SetLastEvent(100);   // Number of events to process
   analyzer->Process(*run);

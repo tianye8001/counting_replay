@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [ $# -eq 0 ] 
+then
+    echo "Howdy! Please enter run number"
+    read RUNNUM
+else
+    RUNNUM=$1
+fi
+
+# conditions added to accept left or right arm only runs
+
+Left=kTRUE
+Right=kTRUE
+
+if [ "$RUNNUM" -lt "10000" ]; then
+#   echo " $RUNNUM is Left Arm run"
+   Right="kFALSE"
+else
+#   echo " $RUNNUM is Right Arm run"
+   Left="kFALSE"
+fi
+
+#numofevents,firstevent,quite,online,plots,L,R,auto,skim
+
+if [ $Left == 'kTRUE' -a $Right == 'kFALSE' ] # LEFT ARM ONLY
+then 
+    analyzer -b -q 'replay_LHRS_online.C('$RUNNUM', 100000)'
+    ./onlinePlots $RUNNUM
+elif [ $Left == 'kFALSE' -a $Right == 'kTRUE' ] # RIGHT ARM ONLY
+then
+    analyzer -b -q 'replay_RHRS_online.C('${RUNNUM}', 100000)'
+    ./onlinePlots $RUNNUM
+else
+    echo " Input parameters incompatible with any plotting option"
+    echo " ./onlineReplay RUNNUM"
+fi

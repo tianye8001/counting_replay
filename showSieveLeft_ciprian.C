@@ -27,8 +27,7 @@
   int itrig = 5;
   // sprintf(ctrig,"fEvtHdr.fEvtType==%d",itrig);
   //  sprintf(ctrig,"fEvtHdr.fEvtNum<50000 && fEvtHdr.fEvtType==1");
-  sprintf(ctrig,"fEvtHdr.fEvtType==1");
-
+  sprintf(ctrig,"fEvtHdr.fEvtNum<200000 && fEvtHdr.fEvtType==1");
   // HRS = R.* or L.*
 
   // only one cluster in each VDC plane
@@ -60,7 +59,7 @@
   gStyle->SetOptStat(1);
   gStyle->SetOptFit(1111);
 
-  TCanvas* c2 = new TCanvas("c2", "c2", 1400, 1000);
+  TCanvas* c2 = new TCanvas("c2", Form("LHRS run# %d",runnum), 1400, 1000);
   c2->Divide(3,2);
   c2->cd(1);
   TH1F* hprojy = new TH1F("hprojy", "Y Projection LHRS", 300, -0.12, 0.12);
@@ -119,13 +118,13 @@
   gPad->SetLogy(1);
  
   c2->cd(3);
-  T->Draw("(L.tr.x+0.9*L.tr.th):L.tr.th", 
+  T->Draw("(L.tr.x+0.9*L.tr.th):L.tr.th>>hh1(100,-0.05,0,05,100,-0.15,0.1)", 
 	  Form("%s && %s && L.tr.th[0]>-0.2&&L.tr.ph[0]<0.1&&L.tr.ph[0]>-0.1 && abs(L.tr.th)<0.05 && abs(L.tr.x)<0.1", ctrig, vdccut));
   gPad->SetGridx(1);
   gPad->SetGridy(1);
 
   c2->cd(6);
-  T->Draw("(L.tr.y+0.9*L.tr.ph):L.tr.ph", 
+  T->Draw("(L.tr.y+0.9*L.tr.ph):L.tr.ph>>hh2(100,-0.05,0,05,100,-0.15,0.15)", 
 	  Form("%s && %s && L.tr.th[0]>-0.2&&L.tr.ph[0]<0.1&&L.tr.ph[0]>-0.1 && abs(L.tr.ph)<0.05 && abs(L.tr.y-0.02)<0.1", ctrig, vdccut));
   gPad->SetGridx(1);
   gPad->SetGridy(1);
@@ -163,7 +162,9 @@
 
   c2->cd(2);
   TH1F* hprojx = new TH1F("hprojx", "X Projection LHRS", 300, -0.12, 0.12);
-  T->Project(hprojx->GetName(),"L.tr.x[0]+0.9*L.tr.th[0]", "abs(L.tr.x[0]+0.9*L.tr.th[0])<0.1 && fEvtHdr.fEvtType==1");
+  //  T->Project(hprojx->GetName(),"L.tr.x[0]+0.9*L.tr.th[0]", "abs(L.tr.x[0]+0.9*L.tr.th[0])<0.1 && fEvtHdr.fEvtType==1");
+  T->Project(hprojx->GetName(),"L.tr.x[0]+0.9*L.tr.th[0]", ccut);
+
 
   hprojx->Fit("gaus");
 

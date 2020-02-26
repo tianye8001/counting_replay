@@ -25,11 +25,11 @@ fi
 
 if [ $Left == 'kTRUE' -a $Right == 'kFALSE' ] # LEFT ARM ONLY
 then 
-    analyzer -b -q 'replay_LHRS_online.C('$RUNNUM', 100000)'
+    analyzer -b -q 'replay_LHRS_online.C('$RUNNUM', 50000)'
     ./onlinePlots $RUNNUM
 elif [ $Left == 'kFALSE' -a $Right == 'kTRUE' ] # RIGHT ARM ONLY
 then
-    analyzer -b -q 'replay_RHRS_online.C('${RUNNUM}', 100000)'
+    analyzer -b -q 'replay_RHRS_online.C('${RUNNUM}', 50000)'
     ./onlinePlots $RUNNUM
 else
     echo " Input parameters incompatible with any plotting option"

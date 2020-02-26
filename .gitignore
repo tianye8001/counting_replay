@@ -18,10 +18,10 @@
 
 #folder
 bk_db_prex
-DB
+#DB
 DB_APEX
 DB_PREXI
-DB_PREXII
+#DB_PREXII
 dpscan_27JunOwl
 FADC_decode_prex
 onlineGUI64

@@ -3,7 +3,7 @@
 
   // make projection for diff z
   bool show_thph = false;
-  bool do_cip_thing = false;
+  bool do_cip_thing = false;//plot projections at different planes
 
   gROOT->Reset();
 
@@ -26,7 +26,8 @@
   Int_t runnum;
   runnum = (int)T->GetMaximum("fEvtHdr.fRun");
 
-  sprintf(ctrig,"fEvtHdr.fEvtNum<200000&&(fEvtHdr.fEvtType==1||fEvtHdr.fEvtType==5)");
+  //  sprintf(ctrig,"fEvtHdr.fEvtNum<200000&&(fEvtHdr.fEvtType==1||fEvtHdr.fEvtType==5)");
+  sprintf(ctrig,"fEvtHdr.fEvtNum<200000 && fEvtHdr.fEvtType==1");
   // HRS = R.* or L.*
 
   // only one cluster in each VDC plane
@@ -59,7 +60,7 @@
 
   gStyle->SetOptStat(1);
   gStyle->SetOptFit(1111);
-  TCanvas* c2 = new TCanvas("c2", "c2", 1400, 1000);
+  TCanvas* c2 = new TCanvas("c2", Form("RHRS run# %d",runnum), 1400, 1000);
   c2->Divide(3,2);
   c2->cd(1);
   TH1F* hprojy = new TH1F("hprojy", "Y Projection RHSR", 300, -0.12, 0.12);
@@ -117,14 +118,16 @@
   gPad->SetLogy(1);
 
   c2->cd(3);
-  T->Draw("(R.tr.x+0.9*R.tr.th):R.tr.th", 
+  T->Draw("(R.tr.x+0.9*R.tr.th):R.tr.th>>hh1(100,-0.05,0,05,100,-0.15,0.1)", 
 	  Form("%s && %s && R.tr.th[0]>-0.2&&R.tr.ph[0]<0.1&&R.tr.ph[0]>-0.1 && abs(R.tr.th)<0.05 && abs(R.tr.x)<0.1", ctrig, vdccut));
+  //hh1->DrawCopy();
   gPad->SetGridx(1);
   gPad->SetGridy(1);
 
   c2->cd(6);
-  T->Draw("(R.tr.y+0.9*R.tr.ph):R.tr.ph", 
+  T->Draw("(R.tr.y+0.9*R.tr.ph):R.tr.ph>>hh2(100,-0.05,0,05,100,-0.15,0.15)", 
 	  Form("%s && %s && R.tr.th[0]>-0.2&&R.tr.ph[0]<0.1&&R.tr.ph[0]>-0.1 && abs(R.tr.ph)<0.05 && abs(R.tr.y-0.02)<0.1", ctrig, vdccut));
+  //hh2->DrawCopy();
   gPad->SetGridx(1);
   gPad->SetGridy(1);
 

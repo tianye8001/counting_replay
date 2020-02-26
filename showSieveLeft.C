@@ -19,6 +19,9 @@
 
  char ctrig[50],vdccut[200],tgtcut[200],tgty[200],ccut[800],cand[5];
 
+ Int_t runnum;                                                                                                                                                                                                                               
+ runnum = (int)T->GetMaximum("fEvtHdr.fRun");      
+
 // Trigger choice : scintillator trigger
 //  HAPPEXII want T1(R-HRS) or T3(L-HRS)
 //  HAPPEXIII want T2
@@ -28,13 +31,13 @@
 // int itrig = 5;
  // sprintf(ctrig,"fEvtHdr.fEvtType==%d",itrig);
  //sprintf(ctrig,"fEvtHdr.fEvtNum<20000&&(fEvtHdr.fEvtType==1||fEvtHdr.fEvtType==5)");
- sprintf(ctrig,"fEvtHdr.fEvtNum<200000  && fEvtHdr.fEvtType==1");
-// HRS = R.* or L.*
+ sprintf(ctrig,"fEvtHdr.fEvtNum<100000");
+ // HRS = R.* or L.*
 
-// only one cluster in each VDC plane
-sprintf(vdccut,"L.vdc.u1.nclust==1&&L.vdc.v1.nclust==1&&L.vdc.u2.nclust==1&&L.vdc.v2.nclust==1");
+ // only one cluster in each VDC plane
+ sprintf(vdccut,"L.vdc.u1.nclust==1&&L.vdc.v1.nclust==1&&L.vdc.u2.nclust==1&&L.vdc.v2.nclust==1");
 
-sprintf(cand,"&&");
+ sprintf(cand,"&&");
 
 // Build the total cut
 
@@ -49,27 +52,33 @@ cout << "Cuts used : "<<endl;
 
 cout << ccut << endl;
 
- TH2F *htgthph = new TH2F("htgthph","Target theta-phi (theta vertical)",200,-0.03,0.035,200,-0.07,0.07);
- //TH2F *htgthph = new TH2F("htgthph","Target theta-phi (theta vertical)",200,-0.01,0.035,200,-0.04,0.04);
+double scale, Q1scale;
 
+ cout << "Septum scale, Q1 scale?" << endl;
+ cin >> scale >> Q1scale;
 
-T->Draw("L.gold.th:L.gold.ph>>htgthph",ccut,"colz");
+ TH2F *htgthph = new TH2F("htgthph",Form("Target theta-phi (theta vertical) (Run %i) Septum %.1f Percent, Q1 %.1f Percent",runnum,scale,Q1scale),200,-0.03,0.035,200,-0.07,0.07);
 
+ T->Draw("L.gold.th:L.gold.ph>>htgthph",ccut,"COLZ",100000);
+ gPad->SetGridx(1);
+ gPad->SetGridy(1);
+ c0.SaveAs(Form("LeftSieve_%i.pdf",runnum));
 
- TCanvas c1;
-
- htgthph->Draw();
- c1.SaveAs("LeftSieve.pdf");
-
- TCanvas c2;
+ TCanvas c3("c3", "c3", 1000, 400);
+ c3.Divide(2,1);
+ c3.cd(1);
 
  TCut cut1= "abs(L.tr.y[0]+1.0*L.tr.ph[0]+0.03)<0.07 && abs(L.tr.y[0]+0.0*L.tr.ph[0]-0.03)<0.15 && abs(L.tr.x[0])<0.2 &&  abs(L.tr.x[0]-0.02)<0.2  &&abs(L.tr.ph[0])<0.1";
-cout << ccut << endl;
+ cout << ccut << endl;
 
- TH2F *hsieve = new TH2F("hsieve","",200,-0.1,0.035,200,-0.17,0.25);
- //TH2F *htgthph = new TH2F("htgthph","Target theta-phi (theta vertical)",200,-0.01,0.035,200,-0.04,0.04);
+ TH2F *hsieve = new TH2F("hsieve","L.tr.x[0]+0.2*L.tr.th[0]:L.tr.y[0]+0.2*L.tr.ph[0]",200,-0.05,0.01,200,-0.2,0.2);
+ T->Draw("L.tr.x[0]+0.2*L.tr.th[0]:L.tr.y[0]+0.2*L.tr.ph[0]>>hsieve",cut1,"colz",100000);
+ gPad->SetGridx(1);
+ gPad->SetGridy(1);
 
+ c3.cd(2);
+ hsieve->Draw();
+ gPad->SetGridx(1);
+ gPad->SetGridy(1);
 
-T->Draw("L.tr.x[0]+0.2*L.tr.th[0]:L.tr.y[0]+0.2*L.tr.ph[0]>>hsieve",cut1,"colz");
-hsieve->Draw();
 }
